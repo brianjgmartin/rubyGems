@@ -4,30 +4,43 @@ class QuestionGem
 	@question = ""
 
 	# This method retuens a question based on a Users
-	# Level and difficulty
-	def self.questionuestionGenerator(level, difficulty)
+	# Level, difficulty and number of correct questions answered
+	# Each level Consists of 8 questions 
+	# Each level has two different types of questions with two difficulty levels
+
+	def self.questionuestionGenerator(level, difficulty, correct_result_count)
+		# Increase Question complexity
+		if correct_result_count <=4
+			easy = true
+		else
+			easy = false
+		end
+
+		# Increase difficulty of Question
 		if difficulty == 1
 			randomRange = (1..10)
-		elsif difficulty == 2
+		else
 			randomRange = (10..20)
 		end
+
 		x = rand(randomRange).to_i
 		y = rand(randomRange).to_i
 		z = rand(randomRange).to_i
 		
 
-		# Add Two Numbers
-		if level == 1
+		# Level 1 ---- Add Two Numbers
+		if level == 1 and easy
 			@question = x.to_s + " + " + y.to_s 
 			$ans = x + y
 
-		# Add Three Numbers
-		elsif level == 2
+		elsif level == 1 and !easy 
+			# Add Three Numbers 
 			@question = x.to_s + " + " + y.to_s + " + " + z.to_s 
 			$ans = x + y + z
-
-		# Subtraction Where Answer is positive using 2 numbers
-		elsif level == 3
+		end
+		
+		# Level 2 ---- Subtraction Where Answer is positive using 2 numbers
+		if level == 2 and easy
 			if y <= x 
 				@question = x.to_s + " - " + y.to_s
 				$ans = x - y
@@ -37,52 +50,55 @@ class QuestionGem
 			end
 
 		# Subtraction Where Answer may be Negative using 2 numbers	
-		elsif level == 4
+		elsif level == 2 and !easy 
 				@question = x.to_s + " - " + y.to_s
 				$ans = x - y
+		end
 
-		# Subtraction Where Answer is positive or Negative using 3 numbers
-		elsif level == 5
+		# Level 3 ---- Subtraction Where Answer is positive or Negative using 3 numbers
+		if level == 3 and easy
 			@question = y.to_s + " - " + x.to_s + " - " + z.to_s
 			$ans = y - x - z
 
 		# Addition and subtraction combined
-		elsif level == 6
+		elsif level == 3 and !easy
 			@question = y.to_s + " + " + x.to_s + " - " + z.to_s
 			$ans = y + x - z
+		end
 
-		# Multiplication of two Positive numbers
-		elsif level == 7
+		# # Level 4 ------- Multiplication of two Positive numbers
+		if level == 4 and easy
 			@question = y.to_s + " * " + x.to_s
 			$ans = y * x
-
 		# Multiplication of 3 numbers
-		elsif level == 8
+		elsif level == 4 and !easy
 			@question = y.to_s + " * " + x.to_s + " * " + z.to_s
 			$ans = y * x * z
+		end
 
-		# Multiplication of two numbers Plus Addition
-		elsif level == 9
+		# Level 5 ---- Multiplication of two numbers Plus Addition
+		if level == 5 and easy
 			@question = "( " + y.to_s + " * " + x.to_s + " )" + " + " + z.to_s
 			$ans = y * x + z
-
-		# Multiplication of two numbers Plus Addition
-		elsif level == 10
+		# Multiplication of two numbers Plus Addition without Parenthesis
+		elsif level == 5 and !easy
 			@question = y.to_s + " * " + x.to_s + " + " + z.to_s
 			$ans = y * x + z
+		end
 
-		 # Multiplication of two numbers including a subtraction
-		elsif level == 11
+		# Level 6 ----- Multiplication of two numbers including a subtraction
+		if level == 6 and easy
 			@question = "( " + y.to_s + " * " + x.to_s + " )" + " - " + z.to_s
 			$ans = y * x - z
 
-		# Multiplication of two numbers including a subtraction withou Precedence brackets
-		elsif level == 12
+		# Multiplication of two numbers including a subtraction without Parenthesis
+		elsif level == 6 and !easy
 			@question = y.to_s + " * " + x.to_s + " - " + z.to_s
 			$ans = y * x - z
+		end
 
-		# Division of two Positive numbers that equal a whole number 
-		elsif level == 13
+		# Level 7 ---- Division of two Positive numbers that equal a whole number 
+		if level == 7 and easy
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
 			y = rand(1..20)	
@@ -90,8 +106,8 @@ class QuestionGem
 			@question = x.to_s + " / " + y.to_s
 			$ans = x / y
 
-		# Division of two Positive numbers that equal a whole number plus Addition
-		elsif level == 14
+		# Division of two Positive numbers that equal a whole number plus Addition with Parenthesis
+		elsif level == 7 and correct_result_count >= 5 and correct_result_count <= 6
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
 			y = rand(1..20)	
@@ -99,17 +115,18 @@ class QuestionGem
 			@question = "( " + x.to_s + " / " + y.to_s + " )" + " + " + z.to_s
 			$ans = x / y + z
 
-
-		elsif level == 15
+		# Division of two Positive numbers that equal a whole number plus Addition without Parenthesis
+		elsif level == 7 and correct_result_count > 6
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
 			@question = x.to_s + " / " + y.to_s + " + " + z.to_s
 			$ans = x / y + z
+		end
 
-		# Division of two Positive numbers that equal a whole number including Subtraction
-		elsif level == 16
+		# Level 8 ----- Division of two Positive numbers that equal a whole number including Subtraction
+		if level == 8 and easy
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
 			y = rand(1..20)	
@@ -117,7 +134,7 @@ class QuestionGem
 			@question = "( " + x.to_s + " / " + y.to_s + " )"  + " - " + z.to_s
 			$ans = x / y - z
 
-		elsif level == 17
+		elsif level == 8 and !easy
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
 			y = rand(1..20)	
