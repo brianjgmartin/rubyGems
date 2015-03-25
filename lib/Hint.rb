@@ -8,6 +8,7 @@ class Hint
 		# Example (Number operator Number)
 		if ((question =~ /^(\d\s[^...]\s\d)+$/) && result == true) 
 			@hint = "Work from left to right"
+
 		# Provide a more detailed Hint
 		elsif ((question =~ /^(\d\s\-\s\d)+$/) && result == false)
 			@hint = "Subtract number on the left from number on right"
@@ -17,6 +18,7 @@ class Hint
 			@hint = "Multiply The number on the left by number on the right"
 		elsif ((question =~ /^(\d\s\/\s\d)+$/) && result == false)
 			@hint = "Divide the number on the left by the number on the right"
+
 		# Example (Number (+ or -) Number (+ or -) Number)[^\*\/]
 		elsif ((question =~ /^(\d\s[^\*\/]\s\d\s[^\*\/]\s\d)+$/) && result == true)
 			@hint = "If operators are of equal precedence work from left to right"
@@ -31,10 +33,12 @@ class Hint
 			@hint = "Work from left to right, Subtract the second number from the first number and subtract the third number from the result"
 		# Example 7 + 8 + 2
 		elsif ((question =~ /^(\d\s\+\s\d\s\+\s\d)+$/) && result == false)	
-			@hint = "Work from left to right,adding one number to the next..."		
+			@hint = "Work from left to right,adding one number to the next..."	
+
 		# Example (Number (operator) Number (operator) Number)
 		elsif ((question =~ /^(\d\s[^...]\s\d\s[^...]\s\d)+$/)&& result == true)
 			@hint = "Identify order of precedence and solve"
+			
 		# Provide a more detailed Hint
 		elsif ((question =~ /^(\d\s\*\s\d\s\*\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, multiply the first number by the second number and multiply the result by the third number"
@@ -48,6 +52,7 @@ class Hint
 			@hint = "Work from left to right, Divide the first number by the second number and add the result to the third number"
 		elsif ((question =~ /^(\d\s\/\s\d\s\-\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, Divide the first number by the second number and subtract the third number from the result"
+		
 		# Any Question which contains Parentheses
 		elsif ((question =~ /\(/) && result == true)
 			@hint = "REMEMBER Solve the Parentheses first"
