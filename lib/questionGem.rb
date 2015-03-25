@@ -8,7 +8,7 @@ class QuestionGem
 	# Each level Consists of 8 questions 
 	# Each level has two different types of questions with two difficulty levels
 
-	def self.questionuestionGenerator(level, difficulty, correct_result_count)
+	def self.questionGenerator(level, difficulty, correct_result_count)
 		# Increase Question complexity
 		if correct_result_count <=4
 			easy = true
