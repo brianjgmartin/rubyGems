@@ -5,7 +5,7 @@ class Congratulations
 	# Returns level results on Completion
 	def self.response(level, correct, wrong, name)
 		@congrats = "Congratulations " + name + " You have completed Level " + level.to_s
-		@right = "You got All " + correct.to_s + " Questions Correct"
+		@right = "You got " + correct.to_s + " Questions Correct"
 		@notcorrect = "You got " + wrong.to_s + " Wrong Answers"
 	return @congrats, @right, @notcorrect
 	end
