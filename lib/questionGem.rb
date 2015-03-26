@@ -10,7 +10,7 @@ class QuestionGem
 
 	def self.questionGenerator(level, difficulty, correct_result_count)
 		# Increase Question complexity
-		if correct_result_count <=4
+		if correct_result_count <=3
 			easy = true
 		else
 			easy = false
