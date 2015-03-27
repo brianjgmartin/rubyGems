@@ -147,8 +147,8 @@ class QuestionGem
 	end
 
 	# Check Student answer and pass to controller
-	def self.getResult(student_ans)
-		if student_ans == $ans
+	def self.getResult(student_ans, actual_result)
+		if student_ans == actual_result
 			result = true
 		else 
 			result = false
