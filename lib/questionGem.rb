@@ -152,6 +152,7 @@ class QuestionGem
 			result = true
 		else 
 			result = false
+		end
 		return result
 	end
 
