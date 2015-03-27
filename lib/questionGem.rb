@@ -146,7 +146,7 @@ class QuestionGem
 		return @question
 	end
 
-	Check Student answer and pass to controller
+	# Check Student answer and pass to controller
 	def self.getResult(student_ans)
 		if student_ans == $ans
 			result = true
