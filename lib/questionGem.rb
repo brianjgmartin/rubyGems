@@ -68,17 +68,17 @@ class QuestionGem
 
 		# # Level 4 ------- Multiplication of two Positive numbers
 		if level == 4 and easy
-			@question = y.to_s + " * " + x.to_s
+			@question = y.to_s + " X " + x.to_s
 			$ans = y * x
 		# Multiplication of 3 numbers
 		elsif level == 4 and !easy
-			@question = y.to_s + " * " + x.to_s + " * " + z.to_s
+			@question = y.to_s + " X " + x.to_s + " X " + z.to_s
 			$ans = y * x * z
 		end
 
 		# Level 5 ---- Multiplication of two numbers Plus Addition
 		if level == 5 and easy
-			@question = "( " + y.to_s + " * " + x.to_s + " )" + " + " + z.to_s
+			@question = "( " + y.to_s + " X " + x.to_s + " )" + " + " + z.to_s
 			$ans = y * x + z
 		# Multiplication of two numbers Plus Addition without Parenthesis
 		elsif level == 5 and !easy
@@ -88,12 +88,12 @@ class QuestionGem
 
 		# Level 6 ----- Multiplication of two numbers including a subtraction
 		if level == 6 and easy
-			@question = "( " + y.to_s + " * " + x.to_s + " )" + " - " + z.to_s
+			@question = "( " + y.to_s + " X " + x.to_s + " )" + " - " + z.to_s
 			$ans = y * x - z
 
 		# Multiplication of two numbers including a subtraction without Parenthesis
 		elsif level == 6 and !easy
-			@question = y.to_s + " * " + x.to_s + " - " + z.to_s
+			@question = y.to_s + " X " + x.to_s + " - " + z.to_s
 			$ans = y * x - z
 		end
 
@@ -103,7 +103,7 @@ class QuestionGem
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
-			@question = x.to_s + " / " + y.to_s
+			@question = x.to_s + " ÷ " + y.to_s
 			$ans = x / y
 
 		# Division of two Positive numbers that equal a whole number plus Addition with Parenthesis
@@ -112,7 +112,7 @@ class QuestionGem
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
-			@question = "( " + x.to_s + " / " + y.to_s + " )" + " + " + z.to_s
+			@question = "( " + x.to_s + " ÷ " + y.to_s + " )" + " + " + z.to_s
 			$ans = x / y + z
 
 		# Division of two Positive numbers that equal a whole number plus Addition without Parenthesis
@@ -121,7 +121,7 @@ class QuestionGem
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
-			@question = x.to_s + " / " + y.to_s + " + " + z.to_s
+			@question = x.to_s + " ÷ " + y.to_s + " + " + z.to_s
 			$ans = x / y + z
 		end
 
@@ -131,7 +131,7 @@ class QuestionGem
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
-			@question = "( " + x.to_s + " / " + y.to_s + " )"  + " - " + z.to_s
+			@question = "( " + x.to_s + " ÷ " + y.to_s + " )"  + " - " + z.to_s
 			$ans = x / y - z
 
 		elsif level == 8 and !easy
@@ -139,10 +139,20 @@ class QuestionGem
 			x = rand(1..20)
 			y = rand(1..20)	
 		end
-			@question = x.to_s + " / " + y.to_s + " - " + z.to_s
+			@question = x.to_s + " ÷ " + y.to_s + " - " + z.to_s
 			$ans = x / y - z
 
 		end
 		return @question
 	end
+
+	Check Student answer and pass to controller
+	def self.getResult(student_ans)
+		if student_ans == $ans
+			result = true
+		else 
+			result = false
+		return result
+	end
+
 end
