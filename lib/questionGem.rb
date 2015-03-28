@@ -68,34 +68,34 @@ class QuestionGem
 
 		# # Level 4 ----- Multiplication of two Positive numbers
 		if level == 4 and question_type_easy
-			@question = y.to_s + " X " + x.to_s
+			@question = y.to_s + " x " + x.to_s
 			@ans = y * x
 
 		# Multiplication of 3 numbers
 		elsif level == 4 and !question_type_easy
-			@question = y.to_s + " X " + x.to_s + " X " + z.to_s
+			@question = y.to_s + " x " + x.to_s + " X " + z.to_s
 			@ans = y * x * z
 		end
 
 		# Level 5 ---- Multiplication of two numbers Plus Addition
 		if level == 5 and question_type_easy
-			@question = "( " + y.to_s + " X " + x.to_s + " )" + " + " + z.to_s
+			@question = "( " + y.to_s + " x " + x.to_s + " )" + " + " + z.to_s
 			@ans = y * x + z
 
 		# Multiplication of two numbers Plus Addition without Parenthesis
 		elsif level == 5 and !question_type_easy
-			@question = y.to_s + " X " + x.to_s + " + " + z.to_s
+			@question = y.to_s + " x " + x.to_s + " + " + z.to_s
 			@ans = y * x + z
 		end
 
 		# Level 6 ----- Multiplication of two numbers including a subtraction
 		if level == 6 and question_type_easy
-			@question = "( " + y.to_s + " X " + x.to_s + " )" + " - " + z.to_s
-			$ans = y * x - z
+			@question = "( " + y.to_s + " x " + x.to_s + " )" + " - " + z.to_s
+			@ans = y * x - z
 
 		# Multiplication of two numbers including a subtraction without Parenthesis
 		elsif level == 6 and !question_type_easy
-			@question = y.to_s + " X " + x.to_s + " - " + z.to_s
+			@question = y.to_s + " x " + x.to_s + " - " + z.to_s
 			@ans = y * x - z
 		end
 
@@ -147,4 +147,6 @@ class QuestionGem
 		return @question, @ans
 	end
 	# End method
+	
+# End class
 end
