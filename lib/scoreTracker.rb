@@ -1,7 +1,8 @@
 class ScoreTracker
 
 	# Increment Level When 8 questions from previous level are correct
-	def self.CheckScore(correct_result, level, num_questions)
+	# And or 70% of questions must be answered correctly
+	def self.CheckLevel(correct_result, level, num_questions)
 
 		# minimum questions needed to increment a level
 		@min_correct_answers = 8
@@ -15,7 +16,8 @@ class ScoreTracker
 		end
 
 		# increment or decrement level of difficulty based on correct results
-		if ((correct_result <= 1) or (correct_result  >= 4 and correct_result <= 5) or (correct_result >= @min_correct_answers)) 
+		if ((correct_result <= 1) or (correct_result  >= 4 and correct_result <= 5) 
+			or (correct_result >= @min_correct_answers)) 
         @difficulty = 1
       	else
         @difficulty = 2 
