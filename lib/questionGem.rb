@@ -147,6 +147,13 @@ class QuestionGem
 		return @question, @ans
 	end
 	# End method
-	
+		def self.checkresult(student_ans, actual_ans)
+			if student_ans == actual_ans
+				@result = true
+			else
+				@result = false
+			end
+			return @result
+		end
 # End class
 end
