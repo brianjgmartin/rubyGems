@@ -1,6 +1,6 @@
 class QuestionGem
 
-	$ans = 0
+	@ans = 0
 	@question = ""
 
 	# This method returns a question based on a Users
@@ -43,49 +43,49 @@ class QuestionGem
 		if level == 2 and question_type_easy
 			if y <= x 
 				@question = x.to_s + " - " + y.to_s
-				$ans = x - y
+				@ans = x - y
 			else 
 				@question = y.to_s + " - " + x.to_s
-				$ans = y - x
+				@ans = y - x
 			end
 
 		# Subtraction Where Answer may be Negative using 2 numbers	
 		elsif level == 2 and !question_type_easy 
 				@question = x.to_s + " - " + y.to_s
-				$ans = x - y
+				@ans = x - y
 		end
 
 		# Level 3 ---- Subtraction Where Answer is positive or Negative using 3 numbers
 		if level == 3 and question_type_easy
 			@question = y.to_s + " - " + x.to_s + " - " + z.to_s
-			$ans = y - x - z
+			@ans = y - x - z
 
 		# Addition and subtraction combined
 		elsif level == 3 and !question_type_easy
 			@question = y.to_s + " + " + x.to_s + " - " + z.to_s
-			$ans = y + x - z
+			@ans = y + x - z
 		end
 
 		# # Level 4 ----- Multiplication of two Positive numbers
 		if level == 4 and question_type_easy
 			@question = y.to_s + " X " + x.to_s
-			$ans = y * x
+			@ans = y * x
 
 		# Multiplication of 3 numbers
 		elsif level == 4 and !question_type_easy
 			@question = y.to_s + " X " + x.to_s + " X " + z.to_s
-			$ans = y * x * z
-			
+			@ans = y * x * z
+		end
 
 		# Level 5 ---- Multiplication of two numbers Plus Addition
 		if level == 5 and question_type_easy
 			@question = "( " + y.to_s + " X " + x.to_s + " )" + " + " + z.to_s
-			$ans = y * x + z
+			@ans = y * x + z
 
 		# Multiplication of two numbers Plus Addition without Parenthesis
 		elsif level == 5 and !question_type_easy
 			@question = y.to_s + " X " + x.to_s + " + " + z.to_s
-			$ans = y * x + z
+			@ans = y * x + z
 		end
 
 		# Level 6 ----- Multiplication of two numbers including a subtraction
@@ -96,7 +96,7 @@ class QuestionGem
 		# Multiplication of two numbers including a subtraction without Parenthesis
 		elsif level == 6 and !question_type_easy
 			@question = y.to_s + " X " + x.to_s + " - " + z.to_s
-			$ans = y * x - z
+			@ans = y * x - z
 		end
 
 		# Level 7 ---- Division of two Positive numbers that equal a whole number 
@@ -106,7 +106,7 @@ class QuestionGem
 			y = rand(1..20)	
 		end
 			@question = x.to_s + " ÷ " + y.to_s
-			$ans = x / y
+			@ans = x / y
 
 		# Division of two Positive numbers that equal a whole number plus Addition with Parenthesis
 		elsif level == 7 and correct_result_count >= 5 and correct_result_count <= 6
@@ -115,7 +115,7 @@ class QuestionGem
 			y = rand(1..20)	
 		end
 			@question = "( " + x.to_s + " ÷ " + y.to_s + " )" + " + " + z.to_s
-			$ans = x / y + z
+			@ans = x / y + z
 
 		# Division of two Positive numbers that equal a whole number plus Addition without Parenthesis
 		elsif level == 7 and correct_result_count > 6
@@ -124,17 +124,17 @@ class QuestionGem
 			y = rand(1..20)	
 		end
 			@question = x.to_s + " ÷ " + y.to_s + " + " + z.to_s
-			$ans = x / y + z
+			@ans = x / y + z
 		end
 
 		# Level 8 ----- Division of two Positive numbers that equal a whole number including Subtraction
 		if level == 8 and question_type_easy
 		while (x.to_f/y.to_f)%1 != 0  do
 			x = rand(1..20)
-			y = rand(1..20)	
+			y = rand(1..20)
 		end
 			@question = "( " + x.to_s + " ÷ " + y.to_s + " )"  + " - " + z.to_s
-			$ans = x / y - z
+			@ans = x / y - z
 
 		elsif level == 8 and !question_type_easy
 		while (x.to_f/y.to_f)%1 != 0  do
@@ -142,10 +142,9 @@ class QuestionGem
 			y = rand(1..20)	
 		end
 			@question = x.to_s + " ÷ " + y.to_s + " - " + z.to_s
-			$ans = x / y - z
-
+			@ans = x / y - z
 		end
-		return @question
+		return @question, @ans
 	end
-
+	# End method
 end
