@@ -73,7 +73,7 @@ class QuestionGem
 
 		# Multiplication of 3 numbers
 		elsif level == 4 and !question_type_easy
-			@question = y.to_s + " x " + x.to_s + " X " + z.to_s
+			@question = y.to_s + " x " + x.to_s + " x " + z.to_s
 			@ans = y * x * z
 		end
 
