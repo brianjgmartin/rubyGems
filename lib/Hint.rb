@@ -15,14 +15,14 @@ class Hint
 			@hint = "Subtract number on the left from number on right"
 		elsif ((question =~ /^(\d\s\+\s\d)+$/) && result == false)
 			@hint = "Add the Number on right to number on left"
-		elsif ((question =~ /^(\d\s\*\s\d)+$/) && result == false)
+		elsif ((question =~ /^(\d\sx\s\d)+$/) && result == false)
 			@hint = "Multiply The number on the left by number on the right"
-		elsif ((question =~ /^(\d\s\/\s\d)+$/) && result == false)
+		elsif ((question =~ /^(\d\s÷\s\d)+$/) && result == false)
 			@hint = "Divide the number on the left by the number on the right"
 
 		# If the previous result was correct provide generic Hint
 		# Example (Number (+ or -) Number (+ or -) Number)[^\*\/]
-		elsif ((question =~ /^(\d\s[^\*\/]\s\d\s[^\*\/]\s\d)+$/) && result == true)
+		elsif ((question =~ /^(\d\s[^x÷]\s\d\s[^x÷]\s\d)+$/) && result == true)
 			@hint = "If operators are of equal precedence work from left to right"
 
 		# Provide a more detailed Hint
@@ -48,22 +48,22 @@ class Hint
 			@hint = "Identify order of precedence and solve"
 
 		# Provide a more detailed Hint
-		elsif ((question =~ /^(\d\s\*\s\d\s\*\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\sx\s\d\sx\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, multiply the first number by the second 
 			number and multiply the result by the third number"
-		elsif ((question =~ /^(\d\s\*\s\d\s\+\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\sx\s\d\s\+\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, multiply the first number by the second 
 			number and add the result to the third number"
-		elsif ((question =~ /^(\d\s\*\s\d\s\-\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\sx\s\d\s\-\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, multiply the first number by the second 
 			number and subtract the third number from the result"
-		elsif ((question =~ /^(\d\s\/\s\d\s\*\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\s÷\s\d\sx\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, Divide the first number by the second 
 			number and multiply the result by the third number"
-		elsif ((question =~ /^(\d\s\/\s\d\s\+\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\s÷\s\d\s\+\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, Divide the first number by the second 
 			number and add the result to the third number"
-		elsif ((question =~ /^(\d\s\/\s\d\s\-\s\d)+$/)&& result == false)
+		elsif ((question =~ /^(\d\s÷\s\d\s\-\s\d)+$/)&& result == false)
 			@hint = "Work from left to right, Divide the first number by the second 
 			number and subtract the third number from the result"
 		
