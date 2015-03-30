@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
  s.name = 'questionGem'
- s.version = '0.0.2'
+ s.version = '0.0.4'
  s.date = '2011-10-03'
  s.summary = "Generate Appropriate Question"
  s.description = "A simple gem"
