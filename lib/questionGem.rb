@@ -30,12 +30,12 @@ class QuestionGem
 
 		# Level 1 ---- Add Two Numbers
 		if level == 1 and question_type_easy
-			@question = x.to_s + " + " + y.to_s 
+			@question = x.to_s + " + " + y.to_s
 			@ans = x + y
 
 		elsif level == 1 and !question_type_easy 
 			# Add Three Numbers 
-			@question = x.to_s + " + " + y.to_s + " + " + z.to_s 
+			@question = x.to_s + " + " + y.to_s + " + " + z.to_s
 			@ans = x + y + z
 		end
 		
